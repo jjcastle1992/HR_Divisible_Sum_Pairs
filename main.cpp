@@ -23,22 +23,24 @@ int divisibleSumPairs(int n, int k, vector<int> ar) {
     std::sort(ar.begin(), ar.end());
 
     //Reviews and array and finds pairs (sums) of numbers where i < j that are divisible by k [i,j] % k = 0
-    for (int i = 0; i < (ar.size() - 1); i++) {
-        //need to track i and i+1 until i+1 == size of array. Need to count all sums that  %  = 0 and return.
+    for (int i = 0; i < (ar.size()); i++) {
+        //need to track i and i+(n-i) until we've traversed the array. Need to count all sums that  %  = 0 and return.
         int currentElement = 0;
         int nextElement = 0;
         int remainder = 0;
 
         currentElement = ar [i];
-        nextElement = ar [i + 1];
-
+        for (int j = (i + 1); j < ar.size(); j++) {
+            nextElement = ar [j];
+        }
+        
         remainder = ((currentElement + nextElement) % k );
 
         if (remainder == 0 ) {
             successfulDivisions++;
         }
     }
-    
+
     return successfulDivisions;
 }
 
