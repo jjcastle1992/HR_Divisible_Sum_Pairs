@@ -19,10 +19,26 @@ vector<string> split(const string &);
 int divisibleSumPairs(int n, int k, vector<int> ar) {
     int successfulDivisions = 0;
 
+    // Sort the array so all values i < i + 1
+    std::sort(ar.begin(), ar.end());
+
     //Reviews and array and finds pairs (sums) of numbers where i < j that are divisible by k [i,j] % k = 0
+    for (int i = 0; i < (ar.size() - 1); i++) {
+        //need to track i and i+1 until i+1 == size of array. Need to count all sums that  %  = 0 and return.
+        int currentElement = 0;
+        int nextElement = 0;
+        int remainder = 0;
 
-    //need to track i and i+1 until i+1 == size of array. Need to count all sums that  %  = 0 and return.
+        currentElement = ar [i];
+        nextElement = ar [i + 1];
 
+        remainder = ((currentElement + nextElement) % k );
+
+        if (remainder == 0 ) {
+            successfulDivisions++;
+        }
+    }
+    
     return successfulDivisions;
 }
 
