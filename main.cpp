@@ -32,12 +32,12 @@ int divisibleSumPairs(int n, int k, vector<int> ar) {
         currentElement = ar [i];
         for (int j = (i + 1); j < ar.size(); j++) {
             nextElement = ar [j];
-        }
-        
-        remainder = ((currentElement + nextElement) % k );
 
-        if (remainder == 0 ) {
-            successfulDivisions++;
+            remainder = ((currentElement + nextElement) % k );
+
+            if (remainder == 0 ) {
+                successfulDivisions++;
+            }
         }
     }
 
